@@ -33,4 +33,16 @@
         </property>
         <property name="defaultErrorView" value="error"/>
     </bean>
+
+    <!-- Used to serve static resources like css, images and javascript files-->
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+
+    <!-- Tiles configuration -->
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/tiles/tiles-definitions.xml</value>
+            </list>
+        </property>
+    </bean>
 </beans>

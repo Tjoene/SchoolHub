@@ -27,7 +27,7 @@
    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
        <property name="exceptionMappings">
 	       <props>
-	           <prop key="com.kutco.springmvc.SpringException">ExceptionPage</prop>
+	           <prop key="com.kutco.schoolhub.SpringException">ExceptionPage</prop>
 	       </props>
 	   </property>
 	   <property name="defaultErrorView" value="error"/>

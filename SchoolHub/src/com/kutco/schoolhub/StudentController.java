@@ -18,7 +18,7 @@ public class StudentController {
 
 	@RequestMapping(value = "/addStudent", method = RequestMethod.POST)
 	@ExceptionHandler({ SpringException.class })
-	public String addStudent(@ModelAttribute("HelloWeb") Student student,
+	public String addStudent(@ModelAttribute("SchoolHub") Student student,
 			ModelMap model) {
 
 		if (student.getName().length() < 5) {

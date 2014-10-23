@@ -1,4 +1,5 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%><!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="en">
 <head>
   <title>SchoolHub</title>
@@ -10,21 +11,21 @@
   <meta name="generator" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="shortcut icon" href="/resources/img/favicon.png" type="image/ico">
+  <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.png" />" type="image/ico">
 
   <!-- CSS Style and Files -->
   <style type="text/css">
     body{padding-top: 70px;padding-bottom: 20px;}
   </style>
 
-  <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap.min.css" />">
+  <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap-theme.min.css" />">
   <!-- End CSS -->
 
   <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
-    <script charset="UTF-8" src="/resources/js/html5shiv-printshiv.min.js"></script>
-    <script charset="UTF-8" src="/resources/js/respond.min.js"></script>
+    <script charset="UTF-8" src="<c:url value="/resources/js/html5shiv-printshiv.min.js" />"></script>
+    <script charset="UTF-8" src="<c:url value="/resources/js/respond.min.js" />"></script>
   <![endif]-->
 </head>
 
@@ -71,8 +72,8 @@
   <!-- End Footer -->
 
   <!-- JavaScript -->
-  <script charset="UTF-8" src="/resources/js/jquery.min.js"></script>
-  <script charset="UTF-8" src="/resources/js/bootstrap.min.js"></script>
+  <script charset="UTF-8" src="<c:url value="/resources/js/jquery.min.js" />"></script>
+  <script charset="UTF-8" src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
   <!-- End JavaScript -->
 </body>
 </html>

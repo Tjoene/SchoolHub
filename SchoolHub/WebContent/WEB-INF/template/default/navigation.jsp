@@ -22,7 +22,7 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="navbar-item-authenication">Others<span class="caret"></span></a>
           <ul class="dropdown-menu" aria-labelledby="navbar-item-authenication" role="menu">
             <spring:url value="/hello" var="helloUrl" htmlEscape="true"/>
-            <li><a href="${helloUrl}">Student</a></li>
+            <li><a href="${helloUrl}">Hello</a></li>
             <spring:url value="/student" var="studentUrl" htmlEscape="true"/>
             <li><a href="${studentUrl}">Student</a></li>
           </ul>

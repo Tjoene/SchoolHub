@@ -35,7 +35,7 @@
     </bean>
 
     <!-- Used to serve static resources like css, images and javascript files-->
-    <mvc:resources mapping="/resources/**" location="/resources/" />
+    <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />  
 
     <!-- Tiles configuration -->
     <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">

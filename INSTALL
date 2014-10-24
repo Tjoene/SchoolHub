@@ -1,0 +1,9 @@
+
+USE THE TCP tool suite from Spring, (and the serving delivered with it)
+do NOT use ANYTHING else, do NOT manually run maven EVER.
+If you have to run Maven, your doing somthing wroing ASK FOR HELP.
+
+SchoolHub_old does NOT work, do not attempt to fix it.
+It is depricated, because the template used was WRONG , and Maven was wronly configured.
+Wich made it difficuled to fix about anything, and so we went over to the new OFFICIAL template.
+

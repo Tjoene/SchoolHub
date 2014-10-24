@@ -49,7 +49,7 @@ public class UploadController {
 	try {  
 		inputStream = file.getInputStream();  
 		  //"C:/Users/nagesh.chauhan/files/"
-		File newFile = new File("./" + fileName);  
+		File newFile = new File("~/" + fileName);  
 		if (!newFile.exists()) {  
 			newFile.createNewFile();  
 		}  

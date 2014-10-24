@@ -23,14 +23,18 @@ public class UploadController {
 	@RequestMapping("/fileUploadForm")  
 	public ModelAndView getUploadForm(  
 		@ModelAttribute("uploadedFile") UploadedFile uploadedFile,  
-		BindingResult result) {  
+		BindingResult result
+		) 
+	{  
 		return new ModelAndView("uploadForm");  
 	}  
 	  
 	@RequestMapping("/fileUpload")  
 	public ModelAndView fileUploaded(  
 		@ModelAttribute("uploadedFile") UploadedFile uploadedFile,  
-		BindingResult result) {  
+		BindingResult result
+		) 
+	{  
 			InputStream inputStream = null;  
 			OutputStream outputStream = null;  
 			  
@@ -44,8 +48,8 @@ public class UploadController {
 	  
 	try {  
 		inputStream = file.getInputStream();  
-		  
-		File newFile = new File("C:/Users/nagesh.chauhan/files/" + fileName);  
+		  //"C:/Users/nagesh.chauhan/files/"
+		File newFile = new File("./" + fileName);  
 		if (!newFile.exists()) {  
 			newFile.createNewFile();  
 		}  

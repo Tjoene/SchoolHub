@@ -45,4 +45,8 @@
             </list>
         </property>
     </bean>
+    
+    <!-- Configuration for file uploading -->
+    <bean id="fileValidator" class="com.kutco.schoolhub.FileValidator" />  
+   	  
 </beans>

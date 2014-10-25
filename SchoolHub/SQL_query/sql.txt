@@ -1,0 +1,31 @@
+Query's to create the database
+
+1. create a database with name=schoolhub_db
+
+2. create the following tables
+
+CREATE TABLE `schoolhub_db`.`courseresource` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`)
+  );
+
+CREATE TABLE `schoolhub_db`.`courses` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `toledo_id` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `schoolhub_db`.`coursegroups` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `schoolhub_db`.`students` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name_first` VARCHAR(45) NOT NULL,
+  `name_last` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
+
+
+

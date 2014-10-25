@@ -1,30 +1,24 @@
-package com.kutco.schoolhub.DAO;
+package com.kutco.schoolhub.dao;
 
 import com.kutco.schoolhub.models.*;
 /*
  * class to communicate the the database
  */
-public class CourseResourceDAO {
+public interface CourseResourceDAO {
 	/*
 	 * method to create resources
 	 * TODO
 	 */
-	public CourseResource CreateRescource(String name){
-		return null;
-	}
+	public CourseResource CreateRescource(String name);
 	/*
 	 * method to get resources
 	 * TODO
 	 */
-	public CourseResource getCourceResourse(){
-		return null;
-	}
+	public CourseResource getCourceResourse();
 	/*
 	 * method to update resource
 	 * TODO
 	 */
-	public void UpdateCourseResource(CourseResource cr){
-		
-	}
+	public void UpdateCourseResource(CourseResource cr);
 
 }

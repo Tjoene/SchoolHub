@@ -7,17 +7,14 @@ import com.kutco.schoolhub.models.*;
 public interface CourseResourceDAO {
 	/*
 	 * method to create resources
-	 * TODO
 	 */
 	public CourseResource CreateRescource(String name);
 	/*
 	 * method to get resources
-	 * TODO
 	 */
 	public CourseResource getCourceResourse();
 	/*
 	 * method to update resource
-	 * TODO
 	 */
 	public void UpdateCourseResource(CourseResource cr);
 

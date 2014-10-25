@@ -1,7 +1,9 @@
-package com.kutco.schoolhub;
+package com.kutco.schoolhub.validators;
   
 import org.springframework.validation.Errors;  
 import org.springframework.validation.Validator;  
+
+import com.kutco.schoolhub.models.UploadedFile;
       
  public class FileValidator implements Validator {  
 	@Override  

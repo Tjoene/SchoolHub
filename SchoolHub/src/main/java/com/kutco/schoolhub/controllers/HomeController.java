@@ -1,4 +1,4 @@
-package com.kutco.schoolhub;
+package com.kutco.schoolhub.controllers;
 
 import java.text.DateFormat;
 import java.util.Date;

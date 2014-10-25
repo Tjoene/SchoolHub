@@ -1,4 +1,4 @@
-package com.kutco.schoolhub;
+package com.kutco.schoolhub.models;
   
 import org.springframework.web.multipart.MultipartFile;  
   

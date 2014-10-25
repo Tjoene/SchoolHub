@@ -2,17 +2,17 @@ package com.kutco.schoolhub.DAO;
 
 import com.kutco.schoolhub.models.*;
 /*
- * class to communicate the the Student
+ * class to communicate with the database
  */
 public interface StudentDAO {
 	/*
 	 * method to create Student
 	 */
-	public CourseResource CreateStudent(String name);
+	public CourseResource CreateStudent(String name,String password,String role);
 	/*
 	 * method to get Student
 	 */
-	public CourseResource getStudent();
+	public CourseResource getStudentById(int id);
 	/*
 	 * method to update Student
 	 */

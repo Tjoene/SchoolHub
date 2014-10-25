@@ -12,7 +12,7 @@ public interface CourseGroupDAO {
 	/*
 	 * method to get CourseGroup
 	 */
-	public CourseGroup getCourceResourse();
+	public CourseGroup getCourceResourseById(String name);
 	/*
 	 * method to update CourseGroup
 	 */

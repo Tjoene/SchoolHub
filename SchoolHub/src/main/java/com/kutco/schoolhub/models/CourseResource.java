@@ -4,6 +4,20 @@ public class CourseResource {
 	private int id;
 	private String name;
 	/*
+	 * constructor without args
+	 */
+	public CourseResource(){
+		setName(name);
+		setId(id);
+	}
+	/*
+	 * constructor with args
+	 */
+	public CourseResource(int id,String name){
+		setName(name);
+		setId(id);
+	}
+	/*
 	 * getter for the id
 	 */
 	public int getId(){return id;}

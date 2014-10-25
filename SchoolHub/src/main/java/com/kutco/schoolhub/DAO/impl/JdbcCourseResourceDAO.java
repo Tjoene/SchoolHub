@@ -1,12 +1,12 @@
-package com.kutco.schoolhub.dao.impl;
+package com.kutco.schoolhub.DAO.impl;
 
-import com.kutco.schoolhub.dao.*;
+import com.kutco.schoolhub.DAO.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.sql.DataSource;
-import com.kutco.schoolhub.dao.*;
+import com.kutco.schoolhub.DAO.*;
 import com.kutco.schoolhub.models.CourseResource;
 
 public class JdbcCourseResourceDAO implements CourseResourceDAO{

@@ -1,4 +1,4 @@
-package com.kutco.schoolhub.dao;
+package com.kutco.schoolhub.DAO;
 
 import com.kutco.schoolhub.models.*;
 /*

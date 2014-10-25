@@ -18,7 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;  
 
 import com.kutco.schoolhub.validators.FileValidator;
-import com.kutco.schoolhub.dao.*;
+import com.kutco.schoolhub.DAO.*;
    
 @Controller  
 public class CourseResourceController {

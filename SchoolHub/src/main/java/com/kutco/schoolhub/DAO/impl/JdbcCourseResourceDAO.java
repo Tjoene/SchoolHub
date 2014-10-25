@@ -18,7 +18,6 @@ public class JdbcCourseResourceDAO implements CourseResourceDAO{
 	@Override
 	public CourseResource CreateRescource(String name) {
 		String sql = " insert into courseresource ( NAME ) values ( ? ) ";
-		System.out.println(sql); /* test print */
 		
 		Connection conn = null;
 		

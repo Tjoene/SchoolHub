@@ -139,7 +139,14 @@
     		<artifactId>spring-jdbc</artifactId>
     		<version>3.0.3.RELEASE</version>
 		</dependency>
-		         
+		
+		<!-- Sitemesh -->
+        <dependency>
+            <groupId>opensymphony</groupId>
+            <artifactId>sitemesh</artifactId>
+            <version>2.4.2</version>
+        </dependency>
+		        
 	</dependencies>
     <build>
         <plugins>

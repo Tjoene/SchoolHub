@@ -2,6 +2,7 @@ package com.kutco.schoolhub.DAO.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.sql.DataSource;
@@ -15,7 +16,7 @@ public class JdbcCourseDAO implements CourseDAO {
 		this.dataSource = dataSource;
 	}
 	@Override
-	public CourseDAO CreateCourse(String name, String toledo_id) {
+	public CourseDAO CreateCourse(String name, String toledo_id) { int id=0;
 		String sql = " insert into courses ( NAME , TOLEDO_ID ) values ( ? , ? ) ";
 		
 		Connection conn = null;
@@ -29,7 +30,16 @@ public class JdbcCourseDAO implements CourseDAO {
 			
 			ps.executeUpdate();
 			ps.close();
- 
+			
+			/* now get the generated id */
+			sql = "select LAST_INSERT_ID() as lastId;";
+			ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()){
+				id = rs.getInt("lastId");
+			}
+			
+			ps.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
  

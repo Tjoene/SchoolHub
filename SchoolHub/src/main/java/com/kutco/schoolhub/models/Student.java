@@ -15,9 +15,11 @@ public class Student {
 	/*
 	 * constructor with args
 	 */
-	public Student(int id,String name){
+	public Student(int id,String name_first,String name_last, String password, String role){
 		setName(name);
 		setId(id);
+		setPassword(password);
+		setRole(role);
 	}
 	/*
 	 * getter for id

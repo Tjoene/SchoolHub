@@ -1,7 +1,5 @@
 package com.kutco.schoolhub.DAO.impl;
 
-import com.kutco.schoolhub.DAO.*;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,18 +8,16 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 
 import com.kutco.schoolhub.DAO.*;
-import com.kutco.schoolhub.models.CourseResource;
 
-public class JdbcCourseResourceDAO implements CourseResourceDAO{
+public class JdbcCourseDAO implements CourseDAO {
 	private DataSource dataSource;
 	 
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
 	@Override
-	public CourseResource CreateRescource(String name) { int id=0;
-		
-		String sql = " insert into courseresource ( NAME ) values ( ? ) ";
+	public CourseDAO CreateCourse(String name, String toledo_id) { int id=0;
+		String sql = " insert into courses ( NAME , TOLEDO_ID ) values ( ? , ? ) ";
 		
 		Connection conn = null;
 		
@@ -30,9 +26,11 @@ public class JdbcCourseResourceDAO implements CourseResourceDAO{
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
 			ps.setString(1, name);
+			ps.setString(2, toledo_id);
 			
 			ps.executeUpdate();
 			ps.close();
+			
 			/* now get the generated id */
 			sql = "select LAST_INSERT_ID() as lastId;";
 			ps = conn.prepareStatement(sql);
@@ -42,7 +40,6 @@ public class JdbcCourseResourceDAO implements CourseResourceDAO{
 			}
 			
 			ps.close();
- 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
  
@@ -53,18 +50,17 @@ public class JdbcCourseResourceDAO implements CourseResourceDAO{
 				} catch (SQLException e) {}
 			}
 		}
-		
-		return new CourseResource(id,name);
+		return null;
 	}
 
 	@Override
-	public CourseResource getCourceResourse() {
+	public CourseDAO getCourseById(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void UpdateCourseResource(CourseResource cr) {
+	public void UpdateCourse(CourseDAO course) {
 		// TODO Auto-generated method stub
 		
 	}

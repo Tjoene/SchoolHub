@@ -2,21 +2,29 @@ package com.kutco.schoolhub.models;
 
 public class Student {
 	private int id;
-	private String name;
+	private String firstName;
+	private String lastName;
+	private String nickname;
 	private String password;
 	private String role;
 	/*
 	 * constructor without args
 	 */
 	public Student(){
-		setName(name);
-		setId(id);
+		setFirstName("FirstName_unknown");
+		setLastName("LastName_unknown");
+		setNickname("NickName_unknown");
+		setId(0);
+		setPassword("Password_unknown");
+		setRole("Role_unknown");
 	}
 	/*
 	 * constructor with args
 	 */
-	public Student(int id,String name_first,String name_last, String password, String role){
-		setName(name);
+	public Student(int id,String firstName,String lastName,String nickname, String password, String role){
+		setFirstName(firstName);
+		setLastName(lastName);
+		setNickname(nickname);
 		setId(id);
 		setPassword(password);
 		setRole(role);
@@ -28,10 +36,22 @@ public class Student {
 		return id;
 	}
 	/*
-	 * getter for name
+	 * getter for first name
 	 */
-	public String getName(){
-		return name;
+	public String getFirstName(){
+		return firstName;
+	}
+	/*
+	 * getter for first name
+	 */
+	public String getLastName(){
+		return lastName;
+	}
+	/*
+	 * getter for first name
+	 */
+	public String getNickname(){
+		return nickname;
 	}
 	/*
 	 * getter for password
@@ -53,12 +73,23 @@ public class Student {
 		this.id = id;
 	}
 	/*
-	 * setter for name
+	 * setter for first name
 	 */
-	public void setName(String name){
-		this.name =name;
+	public void setFirstName(String firstName){
+		this.firstName =firstName;
 	}
-	
+	/*
+	 * setter for last name
+	 */
+	public void setLastName(String lastName){
+		this.lastName =lastName;
+	}
+	/*
+	 * setter for nickname
+	 */
+	public void setNickname(String nickname){
+		this.nickname =nickname;
+	}
 	/*
 	 * setter for password
 	 */

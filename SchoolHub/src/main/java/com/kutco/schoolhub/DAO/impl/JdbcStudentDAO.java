@@ -18,9 +18,8 @@ public class JdbcStudentDAO implements StudentDAO {
 		this.dataSource = dataSource;
 	}
 	@Override
-	public Student CreateStudent(String name_first , String name_last , String password,
-			String role) { int id =0;
-		String sql = " insert into students ( NAME_FIRST , NAME_LAST , PASSWORD , ROLE) values ( ? , ? , ? , ? ) ";
+	public Student CreateStudent(String firstName,String lastName,String nickname, String password, String role){ int id =0;
+		String sql = " insert into students ( FIRSTNAME , LASTNAME , NICKNAME , PASSWORD , ROLE ) values ( ? , ? , ? , ? , ? ) ";
 		
 		Connection conn = null;
 		
@@ -28,10 +27,11 @@ public class JdbcStudentDAO implements StudentDAO {
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
-			ps.setString(1, name_first);
-			ps.setString(2, name_last);
-			ps.setString(3, password);
-			ps.setString(4, role);
+			ps.setString(1, firstName);
+			ps.setString(2, lastName);
+			ps.setString(3, nickname);
+			ps.setString(4, password);
+			ps.setString(5, role);
 			
 			ps.executeUpdate();
 			ps.close();
@@ -55,7 +55,7 @@ public class JdbcStudentDAO implements StudentDAO {
 				} catch (SQLException e) {}
 			}
 		}
-		return new Student(id, name_last, name_first,password,role);
+		return new Student(id,firstName,lastName,nickname,password,role);
 	}
 
 	@Override

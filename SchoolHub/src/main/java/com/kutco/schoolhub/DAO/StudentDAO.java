@@ -8,7 +8,7 @@ public interface StudentDAO {
 	/*
 	 * method to create Student
 	 */
-	public Student CreateStudent(String name_first , String name_last,String password,String role);
+	public Student CreateStudent(String firstName,String lastName,String nickname, String password, String role);
 	/*
 	 * method to get Student
 	 */

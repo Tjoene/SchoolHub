@@ -94,7 +94,7 @@ public class JdbcStudentDAO implements StudentDAO {
 	}
 	@Override
 	public Student getStudentByNickname(String nickname) {
-		String sql = "SELECT * FROM STUDENTS WHERE ID = ?";
+		String sql = "SELECT * FROM STUDENTS WHERE NICKNAME = ?";
 		Student student = null;
 		 
 		Connection conn = null;

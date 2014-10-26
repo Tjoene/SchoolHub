@@ -28,10 +28,16 @@ public class StudentController {
 	StudentDAO studentDAO;
 	
 	@RequestMapping("/addStudent")  
-	public ModelAndView test() 
+	public ModelAndView addStudent() 
 	{  
 		Student addedStudent = studentDAO.CreateStudent("test_first_name", "test_last_name","test_nickname", "testPass", "testRole");
 		System.out.println("added test User with name="+addedStudent.getFirstName()+" "+addedStudent.getLastName());
 		return new ModelAndView("addedStudent");
+	}
+	@RequestMapping("/getStudent")  
+	public ModelAndView getStudent() 
+	{  
+		
+		return new ModelAndView("test");
 	}   
 }  

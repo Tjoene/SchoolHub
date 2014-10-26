@@ -21,7 +21,7 @@ public class AuthTest {
 
 	}
 
-	@Secured("ROLE_USER")
+	@Secured("ROLE_ADMIN")
 	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
 	public ModelAndView adminPage() {
 		ModelAndView model = new ModelAndView();
@@ -35,12 +35,18 @@ public class AuthTest {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error) {
 		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security Test");
-		model.addObject("message", "This is protected page - Admin Page!");
 		if (error != null) {
             model.addObject("error", "Invalid username and password!");
         }
 		model.setViewName("login");
+
+		return model;
+	}
+	
+	@RequestMapping(value = "/logoutSuccess", method = RequestMethod.GET)
+	public ModelAndView logout() {
+		ModelAndView model = new ModelAndView();
+		model.setViewName("logout");
 
 		return model;
 	}

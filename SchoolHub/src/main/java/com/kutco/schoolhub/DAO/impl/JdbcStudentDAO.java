@@ -60,12 +60,80 @@ public class JdbcStudentDAO implements StudentDAO {
 
 	@Override
 	public Student getStudentById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "SELECT * FROM STUDENTS WHERE ID = ?";
+		Student student = null;
+		 
+		Connection conn = null;
+ 
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				student = new Student(
+						id,
+						rs.getString("firstName"),
+						rs.getString("lastName"),
+						rs.getString("nickname"),
+						rs.getString("password"),
+						rs.getString("role"));
+			}
+			rs.close();
+			ps.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+				conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return student;
+	}
+	@Override
+	public Student getStudentByNickname(String nickname) {
+		String sql = "SELECT * FROM STUDENTS WHERE ID = ?";
+		Student student = null;
+		 
+		Connection conn = null;
+ 
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, nickname);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				student = new Student(
+						rs.getInt("id"),
+						rs.getString("firstName"),
+						rs.getString("lastName"),
+						nickname,
+						rs.getString("password"),
+						rs.getString("role"));
+			}
+			rs.close();
+			ps.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+				conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return student;
 	}
 
 	@Override
 	public void UpdateStudent(Student student) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void RemoveStudent(Student student) {
 		// TODO Auto-generated method stub
 		
 	}

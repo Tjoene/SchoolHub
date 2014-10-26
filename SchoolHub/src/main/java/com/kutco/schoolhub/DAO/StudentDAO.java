@@ -14,8 +14,17 @@ public interface StudentDAO {
 	 */
 	public Student getStudentById(int id);
 	/*
+	 * method to get a student by nickname
+	 */
+	public Student getStudentByNickname(String nickname);
+	/*
 	 * method to update Student
 	 */
 	public void UpdateStudent(Student student);
+	/*
+	 * method to remove a student
+	 */
+	public void RemoveStudent(Student student);
+	
 
 }

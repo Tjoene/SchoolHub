@@ -21,11 +21,18 @@ CREATE TABLE `schoolhub_db`.`coursegroups` (
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`));
 
-CREATE TABLE `schoolhub_db`.`students` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name_first` VARCHAR(45) NOT NULL,
-  `name_last` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`));
+CREATE TABLE `students` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `lastName` varchar(45) NOT NULL,
+  `firstName` varchar(45) NOT NULL,
+  `nickname` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `role` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `nickname_UNIQUE` (`nickname`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+  );
+
 
 
 

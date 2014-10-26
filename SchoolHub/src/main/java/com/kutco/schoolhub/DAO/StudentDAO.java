@@ -8,14 +8,23 @@ public interface StudentDAO {
 	/*
 	 * method to create Student
 	 */
-	public Student CreateStudent(String name_first , String name_last,String password,String role);
+	public Student CreateStudent(String firstName,String lastName,String nickname, String password, String role);
 	/*
 	 * method to get Student
 	 */
 	public Student getStudentById(int id);
 	/*
+	 * method to get a student by nickname
+	 */
+	public Student getStudentByNickname(String nickname);
+	/*
 	 * method to update Student
 	 */
 	public void UpdateStudent(Student student);
+	/*
+	 * method to remove a student
+	 */
+	public void RemoveStudent(Student student);
+	
 
 }

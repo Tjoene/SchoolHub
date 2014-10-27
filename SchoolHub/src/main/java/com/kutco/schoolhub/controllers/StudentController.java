@@ -19,9 +19,6 @@ import com.kutco.schoolhub.validators.FileValidator;
 import com.kutco.schoolhub.DAO.*;
 import com.kutco.schoolhub.models.*;
    
-/*
- * simple controller demonstrating a new bug the auth system
- */
 @Controller  
 public class StudentController {
 	@Autowired  
@@ -29,7 +26,10 @@ public class StudentController {
 	
 	@RequestMapping("/addStudent")  
 	public ModelAndView addStudent() 
-	{  
+	{
+		/*
+		 * demo
+		 */
 		Student addedStudent = studentDAO.CreateStudent("test_first_name", "test_last_name","test_nickname", "testPass", "testRole");
 		System.out.println("added test User with name="+addedStudent.getFirstName()+" "+addedStudent.getLastName());
 		return new ModelAndView("addedStudent");
@@ -37,7 +37,13 @@ public class StudentController {
 	@RequestMapping("/getStudent")  
 	public ModelAndView getStudent() 
 	{  
-		
+		/*
+		 * demo
+		 */
+		Student testStudent = studentDAO.getStudentById(1);
+		System.out.println("by id: "+testStudent.toString());
+		testStudent = studentDAO.getStudentByNickname("test_nickname");
+		System.out.println("by nick: "+testStudent.toString());
 		return new ModelAndView("test");
 	}   
 }  

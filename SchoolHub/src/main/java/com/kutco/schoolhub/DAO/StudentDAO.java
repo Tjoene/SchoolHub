@@ -25,6 +25,5 @@ public interface StudentDAO {
 	 * method to remove a student
 	 */
 	public void RemoveStudent(Student student);
-	
 
 }

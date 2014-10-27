@@ -41,4 +41,10 @@ public class CourseGroup {
 	public void setId(int id) {
 		this.id = id;
 	}
+	/*
+	 * simple toString method
+	 */
+	public String toString(){
+		return "CourseGroup id="+getId()+" name="+getName();
+	}
 }

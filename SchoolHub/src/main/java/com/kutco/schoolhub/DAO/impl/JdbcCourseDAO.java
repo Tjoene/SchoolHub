@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 
 import com.kutco.schoolhub.DAO.*;
+import com.kutco.schoolhub.models.*;
 
 public class JdbcCourseDAO implements CourseDAO {
 	private DataSource dataSource;
@@ -16,7 +17,7 @@ public class JdbcCourseDAO implements CourseDAO {
 		this.dataSource = dataSource;
 	}
 	@Override
-	public CourseDAO CreateCourse(String name, String toledo_id) { int id=0;
+	public Course CreateCourse(String name, String toledo_id) { int id=0;
 		String sql = " insert into courses ( NAME , TOLEDO_ID ) values ( ? , ? ) ";
 		
 		Connection conn = null;
@@ -50,13 +51,40 @@ public class JdbcCourseDAO implements CourseDAO {
 				} catch (SQLException e) {}
 			}
 		}
-		return null;
+		return new Course(id,name,toledo_id);
 	}
 
 	@Override
-	public CourseDAO getCourseById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Course getCourseById(int id) {
+		String sql = "SELECT * FROM COURSES WHERE ID = ?";
+		Course c = null;
+		 
+		Connection conn = null;
+ 
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				c = new Course(
+						id,
+						rs.getString("name"),
+						rs.getString("toledo_id")
+						);
+			}
+			rs.close();
+			ps.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+				conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return c;
 	}
 
 	@Override

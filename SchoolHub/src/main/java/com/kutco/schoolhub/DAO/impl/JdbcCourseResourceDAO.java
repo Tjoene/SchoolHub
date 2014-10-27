@@ -1,5 +1,6 @@
 package com.kutco.schoolhub.DAO.impl;
 
+import com.kutco.schoolhub.models.*;
 import com.kutco.schoolhub.DAO.*;
 
 import java.sql.Connection;
@@ -11,6 +12,7 @@ import javax.sql.DataSource;
 
 import com.kutco.schoolhub.DAO.*;
 import com.kutco.schoolhub.models.CourseResource;
+import com.kutco.schoolhub.models.Student;
 
 public class JdbcCourseResourceDAO implements CourseResourceDAO{
 	private DataSource dataSource;
@@ -58,9 +60,35 @@ public class JdbcCourseResourceDAO implements CourseResourceDAO{
 	}
 
 	@Override
-	public CourseResource getCourceResourse() {
-		// TODO Auto-generated method stub
-		return null;
+	public CourseResource getCourceResourseById(int id) {
+		String sql = "SELECT * FROM COURSERESOURCE WHERE ID = ?";
+		CourseResource cr = null;
+		 
+		Connection conn = null;
+ 
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				cr = new CourseResource(
+						id,
+						rs.getString("name")
+						);
+			}
+			rs.close();
+			ps.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+				conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return cr;
 	}
 
 	@Override

@@ -102,4 +102,11 @@ public class Student {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
+	/*
+	 * a short toString method
+	 */
+	public String toString(){
+		return "Student id= "+getId()+"Name:"+getFirstName()+" "+getLastName();
+	}
 }

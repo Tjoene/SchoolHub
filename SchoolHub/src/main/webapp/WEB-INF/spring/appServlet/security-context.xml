@@ -7,18 +7,20 @@
                            http://www.springframework.org/schema/security
                            http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
+	<!-- Enables the Spring MVC @Security annotations -->
     <security:global-method-security secured-annotations="enabled" />
     
+    <!-- Restrict URLs based on role -->
     <security:http auto-config="true">
-        <!-- Restrict URLs based on role -->
+    	<!-- Disable authentication on following pages -->
         <security:intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
         <security:intercept-url pattern="/logoutSuccess*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        
         <security:intercept-url pattern="/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 
-        <!-- <security:intercept-url pattern="/**" access="ROLE_USER" /> --> <!-- Login required on every page -->
+		<!-- Enable authentication on every page of the application -->
+        <!-- <security:intercept-url pattern="/**" access="ROLE_USER" /> -->
 
-        <!-- Override default login and logout pages -->
+        <!-- Override default login and logout pages of Spring -->
         <security:form-login login-page="/login" 
                              login-processing-url="/loginProcess" 
                              default-target-url="/" 
@@ -26,9 +28,10 @@
         <security:logout logout-url="/logout" logout-success-url="/logoutSuccess" />
     </security:http>
 
+	<!-- Configure where Spring needs to authenticate against -->
     <security:authentication-manager>
         <security:authentication-provider>
-            <security:user-service>
+            <security:user-service> <!-- For now use static user+password, needs to be replaced with database -->
                 <security:user name="tjoene" password="password" authorities="ROLE_USER" />
                 <security:user name="admin" password="password" authorities="ROLE_USER,ROLE_ADMIN" />
             </security:user-service>

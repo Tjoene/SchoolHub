@@ -61,11 +61,12 @@ public class SecurityTest {
     @Test
     public void forbiddenPage() throws Exception {
         try {
-            mockMvc.perform(get("/admin").session(session)).andExpect(status().is(403));
+            mockMvc.perform(get("/admin").session(session));
             assertTrue("This user should not be allowed on this page", false);
 
         } catch (NestedServletException e) {
             assertTrue("Everything is ok", true);
+            // @TODO: check if the inner exception is AccessDenied! NestedServlet is a wrapper exception.
         } catch (Exception e) {
             assertTrue("An other error occured then what we expected: " + e.toString(), false);
         }

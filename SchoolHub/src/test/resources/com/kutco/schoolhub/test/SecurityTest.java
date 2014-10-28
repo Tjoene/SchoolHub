@@ -55,4 +55,17 @@ public class SecurityTest {
 
         mockMvc.perform(get("/auth").session(session)).andExpect(status().isOk());
     }
+
+    @Test
+    public void forbiddenPage() throws Exception {
+        Authentication authentication = new UsernamePasswordAuthenticationToken("tjoene", "password");
+
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        securityContext.setAuthentication(authentication);
+
+        MockHttpSession session = new MockHttpSession();
+        session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, securityContext);
+
+        mockMvc.perform(get("/admin").session(session)).andExpect(status().isForbidden());
+    }
 }

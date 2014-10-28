@@ -1,5 +1,6 @@
 package com.kutco.schoolhub.test;
 
+import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -20,6 +21,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.util.NestedServletException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -66,6 +68,14 @@ public class SecurityTest {
         MockHttpSession session = new MockHttpSession();
         session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, securityContext);
 
-        mockMvc.perform(get("/admin").session(session)).andExpect(status().isForbidden());
+        try {
+            mockMvc.perform(get("/admin").session(session)).andExpect(status().isForbidden());
+            assertTrue("This user should not be allowed on this page", false);
+
+        } catch (NestedServletException e) {
+            assertTrue("Everything is ok", true);
+        } catch (Exception e) {
+            assertTrue("An other error occured then what we expected: " + e.toString(), false);
+        }
     }
 }

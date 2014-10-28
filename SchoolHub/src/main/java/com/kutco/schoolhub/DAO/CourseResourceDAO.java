@@ -12,7 +12,7 @@ public interface CourseResourceDAO {
 	/*
 	 * method to get resources
 	 */
-	public CourseResource getCourceResourse();
+	public CourseResource getCourceResourseById(int id);
 	/*
 	 * method to update resource
 	 */

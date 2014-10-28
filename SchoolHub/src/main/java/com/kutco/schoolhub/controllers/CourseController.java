@@ -1,14 +1,11 @@
 package com.kutco.schoolhub.controllers; 
   
-import com.kutco.schoolhub.models.*;
 import java.io.File;  
 import java.io.FileOutputStream;  
 import java.io.IOException;  
 import java.io.InputStream;  
 import java.io.OutputStream;  
   
-
-
 
 import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.stereotype.Controller;  
@@ -20,24 +17,34 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kutco.schoolhub.validators.FileValidator;
 import com.kutco.schoolhub.DAO.*;
+import com.kutco.schoolhub.models.*;
    
 @Controller  
-public class CourseResourceController {
+public class CourseController {
 	@Autowired  
-	CourseResourceDAO courseResourceDAO; 
-	 
-	@RequestMapping("/addCourseResource")  
-	public ModelAndView addCourseResource() 
-	{  
-		CourseResource crAdd = courseResourceDAO.CreateRescource("test");
-		System.out.println("added: "+crAdd.toString());
-		return new ModelAndView("addedCourseResource");
+	CourseDAO courseDAO;
+	
+	@RequestMapping("/addCourse")  
+	public ModelAndView addCourse() 
+	{
+		/*
+		 * demo
+		 */
+		Course newC = courseDAO.CreateCourse("test_Course", "test_toeldo_id");
+		System.out.println("added : "+newC.toString());
+		
+		return new ModelAndView("test");
+		
 	}
-	@RequestMapping("/getCourseResource")  
-	public ModelAndView getCourseResource() 
+	@RequestMapping("/getCourse")  
+	public ModelAndView getCourse() 
 	{  
-		CourseResource crGet = courseResourceDAO.getCourceResourseById(1);
-		System.out.println("added: "+crGet.toString());
-		return new ModelAndView("addedCourseResource");
-	}
+		/*
+		 * demo
+		 */
+		Course getC = courseDAO.getCourseById(1);
+		System.out.println("found : "+getC.toString());
+
+		return new ModelAndView("test");
+	}   
 }  

@@ -39,6 +39,9 @@
 	<import resource="../database/Spring-Datasource.xml" />
 	<import resource="../database/Spring-CourseResourceDAO.xml" />
  	<import resource="../database/Spring-StudentDAO.xml" />
+ 	<import resource="../database/Spring-CourseDAO.xml" />
+ 	<import resource="../database/Spring-CourseGroupDAO.xml" />
+
 	</beans>
 	
 </beans:beans>

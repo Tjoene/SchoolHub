@@ -8,11 +8,11 @@ public interface CourseGroupDAO {
 	/*
 	 * method to create CourseGroup
 	 */
-	public CourseGroup CreateRescource(String name);
+	public CourseGroup CreateCourseGRoup(String name);
 	/*
 	 * method to get CourseGroup
 	 */
-	public CourseGroup getCourceResourseById(String name);
+	public CourseGroup getCourseGroupById(int id);
 	/*
 	 * method to update CourseGroup
 	 */

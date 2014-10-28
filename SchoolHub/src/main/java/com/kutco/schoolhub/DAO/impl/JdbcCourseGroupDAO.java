@@ -1,5 +1,6 @@
 package com.kutco.schoolhub.DAO.impl;
 
+import com.kutco.schoolhub.models.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,6 +10,7 @@ import javax.sql.DataSource;
 
 import com.kutco.schoolhub.DAO.*;
 import com.kutco.schoolhub.models.CourseGroup;
+import com.kutco.schoolhub.models.CourseResource;
 
 public class JdbcCourseGroupDAO implements CourseGroupDAO{
 	private DataSource dataSource;
@@ -17,7 +19,7 @@ public class JdbcCourseGroupDAO implements CourseGroupDAO{
 		this.dataSource = dataSource;
 	}
 	@Override
-	public CourseGroup CreateRescource(String name) { int id=0;
+	public CourseGroup CreateCourseGRoup(String name) { int id=0;
 String sql = " insert into coursegroups ( NAME ) values ( ? ) ";
 		
 		Connection conn = null;
@@ -51,13 +53,39 @@ String sql = " insert into coursegroups ( NAME ) values ( ? ) ";
 				} catch (SQLException e) {}
 			}
 		}
-		return null;
+		return new CourseGroup(id,name);
 	}
 
 	@Override
-	public CourseGroup getCourceResourseById(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public CourseGroup getCourseGroupById(int id) {
+		String sql = "SELECT * FROM COURSEGROUPS WHERE ID = ?";
+		CourseGroup cg = null;
+		 
+		Connection conn = null;
+ 
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				cg = new CourseGroup(
+						id,
+						rs.getString("name")
+						);
+			}
+			rs.close();
+			ps.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+				conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return cg;
 	}
 
 	@Override

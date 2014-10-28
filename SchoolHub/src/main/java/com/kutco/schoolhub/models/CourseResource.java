@@ -33,5 +33,11 @@ public class CourseResource {
 	 * setter for the name
 	 */
 	public void setName(String name){this.name = name;}
+	/*
+	 * simple toString method
+	 */
+	public String toString(){
+		return "CourseResource id="+getId()+" name="+getName();
+	}
 
 }

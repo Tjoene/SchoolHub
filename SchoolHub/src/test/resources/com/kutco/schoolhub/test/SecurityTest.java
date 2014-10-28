@@ -39,37 +39,29 @@ public class SecurityTest {
     MockHttpServletRequest request;
 
     private MockMvc mockMvc;
+    private Authentication authentication;
 
     @Before
     public void setup() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+        this.authentication = new UsernamePasswordAuthenticationToken("tjoene", "password");
+
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        securityContext.setAuthentication(this.authentication);
+
+        MockHttpSession session = new MockHttpSession();
+        session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, securityContext);
     }
 
     @Test
     public void allowedPage() throws Exception {
-        Authentication authentication = new UsernamePasswordAuthenticationToken("tjoene", "password");
-
-        SecurityContext securityContext = SecurityContextHolder.getContext();
-        securityContext.setAuthentication(authentication);
-
-        MockHttpSession session = new MockHttpSession();
-        session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, securityContext);
-
         mockMvc.perform(get("/auth").session(session)).andExpect(status().isOk());
     }
 
     @Test
     public void forbiddenPage() throws Exception {
-        Authentication authentication = new UsernamePasswordAuthenticationToken("tjoene", "password");
-
-        SecurityContext securityContext = SecurityContextHolder.getContext();
-        securityContext.setAuthentication(authentication);
-
-        MockHttpSession session = new MockHttpSession();
-        session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, securityContext);
-
         try {
-            mockMvc.perform(get("/admin").session(session)).andExpect(status().isForbidden());
+            mockMvc.perform(get("/admin").session(session)).andExpect(status().is(403));
             assertTrue("This user should not be allowed on this page", false);
 
         } catch (NestedServletException e) {

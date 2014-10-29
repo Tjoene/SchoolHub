@@ -28,6 +28,8 @@ public class AlternativeSecurityTest {
     private FilterChainProxy springSecurityFilter;
 
     private MockMvc mockMvc; // Main entry point for server-side Spring MVC test
+    private final String securedPage = "/admin";
+    private final String loginURL = "http://localhost/login";
 
     /**
      * This method will load the mock with out own framework application. On this will the mocked HTTP requests be
@@ -37,7 +39,7 @@ public class AlternativeSecurityTest {
      */
     @Before
     public void setUp() throws Exception {
-        mockMvc = webAppContextSetup(wac)
+        this.mockMvc = webAppContextSetup(wac)
         // Enable Spring Security
                 .addFilters(springSecurityFilter).alwaysDo(print()).build(); // Print will dumb the HTTP request the
                                                                              // mockMVC gets from the test class
@@ -53,6 +55,6 @@ public class AlternativeSecurityTest {
      */
     @Test
     public void askLogin() throws Exception {
-        mockMvc.perform(get("/admin")).andExpect(redirectedUrl("http://localhost/login"));
+        this.mockMvc.perform(get(this.securedPage)).andExpect(redirectedUrl(this.loginURL));
     }
 }

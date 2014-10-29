@@ -96,6 +96,19 @@ public class AlternativeSecurityTest {
     }
 
     /**
+     * This method will test if unsecured pages still work with the security system in place (Proves that this code does
+     * not interfere with other code)
+     * 
+     * @throws Exception
+     */
+    @Test
+    public void noLoginNeededButProvided() throws Exception {
+        MockHttpSession session = this.login("tjoene", "password");
+
+        this.mockMvc.perform(get(this.unsecuredPage).session(session)).andExpect(status().isOk());
+    }
+
+    /**
      * This method will test if an user can access the secured page that he has access to.
      * 
      * @throws Exception

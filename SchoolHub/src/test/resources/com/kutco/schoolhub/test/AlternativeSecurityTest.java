@@ -35,6 +35,7 @@ public class AlternativeSecurityTest {
     private FilterChainProxy springSecurityFilter;
 
     private MockMvc mockMvc; // Main entry point for server-side Spring MVC test
+    private final String unsecuredPage = "/";
     private final String securedPage = "/admin";
     private final String loginURL = "http://localhost/login";
 
@@ -79,8 +80,19 @@ public class AlternativeSecurityTest {
      * @throws Exception
      */
     @Test
-    public void askLogin() throws Exception {
+    public void loginNeeded() throws Exception {
         this.mockMvc.perform(get(this.securedPage)).andExpect(redirectedUrl(this.loginURL));
+    }
+
+    /**
+     * This method will test if unsecured pages still work with the security system in place (Proves that this code does
+     * not interfere with other code)
+     * 
+     * @throws Exception
+     */
+    @Test
+    public void noLoginNeeded() throws Exception {
+        this.mockMvc.perform(get(this.unsecuredPage)).andExpect(status().isOk());
     }
 
     /**

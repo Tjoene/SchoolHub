@@ -65,6 +65,7 @@ public class AlternativeSecurityTest {
      */
     @Before
     public void setUp() throws Exception {
+        // Create the Spring MVC application mock
         this.mockMvc = webAppContextSetup(wac)
         // Enable Spring Security
                 .addFilters(springSecurityFilter).alwaysDo(print()).build(); // Print will dumb the HTTP request the
@@ -73,9 +74,6 @@ public class AlternativeSecurityTest {
 
     /**
      * When you go to a secured page and you are not logged in, you need be redirected to the login screen.
-     * 
-     * @TODO: shouldn't the link be http://localhost/schoolhub/login?? Or does the test framework omit the /schoolhub/
-     *        part?
      * 
      * @throws Exception
      */

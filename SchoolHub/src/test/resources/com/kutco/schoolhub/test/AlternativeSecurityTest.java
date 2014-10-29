@@ -39,6 +39,24 @@ public class AlternativeSecurityTest {
     private final String loginURL = "http://localhost/login";
 
     /**
+     * Method to create a new session for a certain user
+     * 
+     * @param user
+     * @param password
+     * @return
+     */
+    private MockHttpSession login(String user, String password) {
+        Authentication authentication = new UsernamePasswordAuthenticationToken(user, password);
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        securityContext.setAuthentication(authentication);
+
+        MockHttpSession session = new MockHttpSession();
+        session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, securityContext);
+
+        return session;
+    }
+
+    /**
      * This method will load the mock with out own framework application. On this will the mocked HTTP requests be
      * unleashed.
      * 
@@ -72,12 +90,7 @@ public class AlternativeSecurityTest {
      */
     @Test
     public void allowAccess() throws Exception {
-        Authentication authentication = new UsernamePasswordAuthenticationToken("admin", "password");
-        SecurityContext securityContext = SecurityContextHolder.getContext();
-        securityContext.setAuthentication(authentication);
-
-        MockHttpSession session = new MockHttpSession();
-        session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, securityContext);
+        MockHttpSession session = this.login("admin", "password");
 
         this.mockMvc.perform(get(this.securedPage).session(session)).andExpect(status().isOk());
     }
@@ -89,12 +102,7 @@ public class AlternativeSecurityTest {
      */
     @Test
     public void denyAccess() throws Exception {
-        Authentication authentication = new UsernamePasswordAuthenticationToken("tjoene", "password");
-        SecurityContext securityContext = SecurityContextHolder.getContext();
-        securityContext.setAuthentication(authentication);
-
-        MockHttpSession session = new MockHttpSession();
-        session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, securityContext);
+        MockHttpSession session = this.login("tjoene", "password");
 
         this.mockMvc.perform(get(this.securedPage).session(session)).andExpect(status().isForbidden());
     }

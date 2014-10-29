@@ -1,9 +1,12 @@
 package com.kutco.schoolhub.test;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.FilterChainProxy;
@@ -38,5 +41,18 @@ public class AlternativeSecurityTest {
         // Enable Spring Security
                 .addFilters(springSecurityFilter).alwaysDo(print()).build(); // Print will dumb the HTTP request the
                                                                              // mockMVC gets from the test class
+    }
+
+    /**
+     * When you go to a secured page and you are not logged in, you need be redirected to the login screen.
+     * 
+     * @TODO: shouldn't the link be http://localhost/schoolhub/login?? Or does the test framework omit the /schoolhub/
+     *        part?
+     * 
+     * @throws Exception
+     */
+    @Test
+    public void askLogin() throws Exception {
+        mockMvc.perform(get("/admin")).andExpect(redirectedUrl("http://localhost/login"));
     }
 }

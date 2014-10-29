@@ -1,5 +1,9 @@
 package com.kutco.schoolhub.test;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
+
+import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.FilterChainProxy;
@@ -21,4 +25,18 @@ public class AlternativeSecurityTest {
     private FilterChainProxy springSecurityFilter;
 
     private MockMvc mockMvc; // Main entry point for server-side Spring MVC test
+
+    /**
+     * This method will load the mock with out own framework application. On this will the mocked HTTP requests be
+     * unleashed.
+     * 
+     * @throws Exception
+     */
+    @Before
+    public void setUp() throws Exception {
+        mockMvc = webAppContextSetup(wac)
+        // Enable Spring Security
+                .addFilters(springSecurityFilter).alwaysDo(print()).build(); // Print will dumb the HTTP request the
+                                                                             // mockMVC gets from the test class
+    }
 }

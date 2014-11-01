@@ -25,7 +25,12 @@
                              login-processing-url="/loginProcess" 
                              default-target-url="/" 
                              authentication-failure-url="/login?error=true" />
-        <security:logout logout-url="/logout" logout-success-url="/logoutSuccess" />
+        <security:logout logout-url="/logout" 
+        				 logout-success-url="/logoutSuccess" 
+        				 delete-cookies="JSESSIONID" />
+        
+        <!-- Allow the user to be remembered upon closure of the browser -->
+        <security:remember-me key="superDuperSecureSecret123" token-validity-seconds="86400"/>
     </security:http>
 
 	<!-- Configure where Spring needs to authenticate against -->

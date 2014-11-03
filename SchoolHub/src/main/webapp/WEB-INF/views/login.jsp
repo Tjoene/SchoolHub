@@ -43,7 +43,7 @@
 	        <div class="col-sm-10">
 	            <div class="checkbox">
 	                <label for="remember">
-	                    <input type="checkbox" name="_spring_security_remember_me" id="remember" value="remember" checked />
+	                    <input type="checkbox" name="_spring_security_remember_me" id="_spring_security_remember_me" value="true" checked />
 	                    remember
 	                </label>
 	            </div>

@@ -1,4 +1,4 @@
-SchoolHub
+SchoolHub [![Build Status](https://api.travis-ci.org/Tjoene/SchoolHub.svg?branch=master)](https://travis-ci.org/Tjoene/SchoolHub)
 =========
 Een schoolproject waar we platform creëren om allerhande informatie van de KHBO/Vives/KU Leuven te bundelen.
 
